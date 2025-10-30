@@ -1,20 +1,38 @@
-class persona:
-    def __init__(self, nombre, apellido, edad, fechaNac):
-        self.nombre = nombre      
-        self.apellido = apellido  
-        self.edad = edad  
-        self.fechanac = fechaNac
+class Persona:
+    def __init__(self, nombre, apellido, edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.edad = edad
 
-class jugador(persona):
-    def __init__(self, nombre, apellido, edad, numFed, fechaNac):
-        super().__init__(nombre, apellido, edad, fechaNac)  
-        self.numFed = numFed                      
+    def mostrar_datos(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Apellido: {self.apellido}")
+        print(f"Edad: {self.edad}")
 
-jugador1 = jugador("Salome", "Franco", 20, 1234, "18/03/2008")
 
-print("Nombre:", jugador1.nombre)
-print("Apellido:", jugador1.apellido)
-print("Edad:", jugador1.edad)
-print("Número de Federación:", jugador1.numFed)
-print("Fecha de Nacimiento:", jugador1.fechanac)
+class Jugador(Persona):
+    def __init__(self, nombre, apellido, edad, numFed):
+        super().__init__(nombre, apellido, edad)
+        self.numFed = numFed
+
+    def mostrar_datos(self):
+        super().mostrar_datos()
+        print(f"Número de Federación: {self.numFed}")
+
+def main():
+    print("=== Registro de Jugador ===")
+    nombre = input("Ingrese el nombre: ")
+    apellido = input("Ingrese el apellido: ")
+    edad = int(input("Ingrese la edad: "))
+    numFed = int(input("Ingrese el número de federación: "))
+
+    jugador1 = Jugador(nombre, apellido, edad, numFed)
+
+    print("\n--- Datos del Jugador ---")
+    jugador1.mostrar_datos()
+
+
+if __name__ == "__main__":
+    main()
+
 
